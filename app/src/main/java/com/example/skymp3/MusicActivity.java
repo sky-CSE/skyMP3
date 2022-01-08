@@ -3,6 +3,8 @@ package com.example.skymp3;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
@@ -26,6 +28,7 @@ public class MusicActivity extends AppCompatActivity {
     Runnable runnable;
     Handler handler;
     int totalTime;
+    Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,9 @@ public class MusicActivity extends AppCompatActivity {
         playBack = findViewById(R.id.button_playback);
         playForward = findViewById(R.id.button_playforward);
         playPause = findViewById(R.id.button_play_pause);
+
+        animation = AnimationUtils.loadAnimation(MusicActivity.this,R.anim.translate_animation);
+        songTitle.startAnimation(animation);
 
         title = getIntent().getStringExtra("title");
         path = getIntent().getStringExtra("filepath");
@@ -91,6 +97,8 @@ public class MusicActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            songTitle.clearAnimation();
+            songTitle.startAnimation(animation);
         });
 
         playForward.setOnClickListener(v -> {
@@ -111,6 +119,8 @@ public class MusicActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            songTitle.clearAnimation();
+            songTitle.startAnimation(animation);
         });
 
         volumeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -186,6 +196,8 @@ public class MusicActivity extends AppCompatActivity {
                         mediaPlayer.start();
                         playPause.setBackgroundResource(R.drawable.ic_baseline_pause_24);
                         songTitle.setText(newtitle);
+                        songTitle.clearAnimation();
+                        songTitle.startAnimation(animation);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
