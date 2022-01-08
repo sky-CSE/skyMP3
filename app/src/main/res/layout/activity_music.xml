@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MusicActivity">
 
+    <TextView
+        android:id="@+id/song_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="song name"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -22,7 +35,7 @@
 
             app:srcCompat="@drawable/ic_baseline_volume_down_24" />
 
-        <ProgressBar
+        <SeekBar
             android:id="@+id/volume_bar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
@@ -53,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:srcCompat="@drawable/ic_baseline_music_note_24" />
 
-    <ProgressBar
+    <SeekBar
         android:id="@+id/time_bar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
@@ -120,7 +133,7 @@
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_weight="1"
-            android:background="@drawable/ic_baseline_play_arrow_24"
+            android:background="@drawable/ic_baseline_pause_24"
             android:textColor="@color/black" />
 
         <Button

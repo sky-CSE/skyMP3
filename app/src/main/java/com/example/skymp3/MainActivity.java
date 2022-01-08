@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         if (MEDIA_PATH != null) {
             File mainFile = new File(MEDIA_PATH);
             File[] fileList = mainFile.listFiles(); //with this method all files would be transferred to fileList array resp.
-            for (File file : Objects.requireNonNull(fileList)) {
+            if(fileList!=null)
+            for (File file : fileList) {
                 Log.e("Media path", file.toString());
 
                 if (file.isDirectory())
